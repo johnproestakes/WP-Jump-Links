@@ -1,0 +1,28 @@
+{
+  "copylibs":{
+    "js": [
+      "node_modules/angular/angular.min.js",
+      "node_modules/angular-route/angular-route.min.js",
+      "node_modules/semantic-ui/dist/semantic.min.js",
+      "node_modules/jquery/dist/jquery.min.js"
+    ],
+    "css" :[
+      "node_modules/semantic-ui/dist/semantic.min.css"
+    ]
+  },
+  "sass":[
+    "./scripts/sass/main.scss"
+  ],
+  "compress":[
+    "./scripts/php/**/*.php",
+    "./scripts/js/**/*",
+    "./scripts/css/**/*",
+    "./scripts/vendor/**/*",
+    "./api/**/*",
+    "./app/**/*",
+    "./*.php",
+    "!./scripts/scss",
+    "!**/*.scss",
+    "!./scripts/ts/**/*"
+  ]
+}
