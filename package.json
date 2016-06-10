@@ -1,0 +1,27 @@
+{
+  "name": "jump-links",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "angular": "~1.5.6",
+    "angular-route": "~1.5.6",
+    "semantic": "0.0.1",
+    "jquery": "~2.2.4"
+  },
+  "devDependencies": {
+    "gulp": "~3.x.x",
+    "gulp-zip": "~3.2.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-typescript": "~2.13.4",
+    "gulp-uglify": "~1.5.3",
+    "gulp-sourcemaps": "~1.6.0",
+    "gulp-sass": "~2.3.1",
+    "gulp-htmlmin": "~2.0.0"
+  }
+}

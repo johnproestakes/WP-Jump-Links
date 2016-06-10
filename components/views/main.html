@@ -1,0 +1,57 @@
+<h2 class="ui header">
+  <i class="linkify icon"></i>
+  <div class="content">
+    Redirect links
+  </div>
+</h2>
+
+
+<form class="ui form segment"
+  semantic-form
+  form-validation="formValidation"
+  form-submit="insertUrl()">
+  <div class="ui error message"><ul class="list"></ul></div>
+<div class="field">
+  <label>Title</label>
+    <input id="title" ng-model="formFields.title" type="text"></div>
+<div class="field">
+    <label>URL</label>
+    <input id="url" ng-model="formFields.url" type="url"></div>
+<button
+  class="ui submit primary button"
+  type="buton">
+    <i class="plus icon"></i>Create redirect
+  </button>
+
+</form>
+
+<div class="ui active centered inline loader" ng-show="results.length ==0"></div>
+  <table class="ui sortable selectable celled fixed table" ng-show="results.length>0">
+    <thead>
+      <tr>
+
+        <th ng-class="{sorted: sortby=='title', ascending: sort, descending: !sort}" ng-click="setSort('title')">Name</th>
+        <th ng-class="{sorted: sortby=='guid', ascending: sort, descending: !sort}" ng-click="setSort('guid')">Short URL</th>
+        <th ng-class="{sorted: sortby=='url', ascending: sort, descending: !sort}" ng-click="setSort('url')">URL</th>
+        <th ng-class="{sorted: sortby=='count', ascending: sort, descending: !sort}" ng-click="setSort('count')">Count</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-dblclick="editItem(item.id)" ng-repeat="item in results track by item.id">
+        <td>{{item.title}}</td>
+        <td class="truncate">{{siteUrl}}{{item.guid}}</td>
+        <td class="truncate">{{item.url}}</td>
+        <td>{{item.count}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div ng-hide="results.length==0" class="ui pagination menu" style="padding-top:0;">
+    <a ng-class="{active: isCurrentPage(key)}" href="javascript:angular.noop()" class="item" ng-repeat="(key, val) in pages track by key" ng-click="refresh(key)">
+      {{key+1}}
+    </a>
+
+  </div>

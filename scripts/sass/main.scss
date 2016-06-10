@@ -1,0 +1,18 @@
+body {
+  background-color: transparent !important;
+}
+.wp-core-ui .button {
+  height: auto !important;
+}
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui.form {
+  .field.error {border:none; background: transparent; margin:0 0 1em;padding:0;box-shadow:none !important;}
+  .notice, div.error, div.updated, .notice-error, div.error {border-left:none;}
+
+}
