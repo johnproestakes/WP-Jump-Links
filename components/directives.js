@@ -1,4 +1,24 @@
 angular.module('StarlingApp')
+.directive("triggerPopup", ['$timeout', function($timeout){
+  return {
+    scope: {
+      popupId:"@"
+    },
+    link: function(scope, el, attr){
+      $timeout(function(){
+        jQuery(el)
+          .popup({
+            popup : jQuery(scope.popupId),
+            on    : 'click',
+            inline:true,
+            position:"bottom left"
+          });
+      });
+
+    }
+  };
+
+}])
 .directive("semanticForm", ['$timeout',function($timeout){
   return {
     restrict: 'A',

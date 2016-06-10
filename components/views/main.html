@@ -5,25 +5,28 @@
   </div>
 </h2>
 
-
-<form class="ui form segment"
+<button type="button" class="ui button" trigger-popup popup-id="#add-form"><i class="add icon"></i> Add</button>
+<div class="ui popup" style="max-width:100%; min-width:300px !important;" id="add-form">
+<form class="ui form"
   semantic-form
   form-validation="formValidation"
   form-submit="insertUrl()">
+  
   <div class="ui error message"><ul class="list"></ul></div>
 <div class="field">
   <label>Title</label>
     <input id="title" ng-model="formFields.title" type="text"></div>
-<div class="field">
+<div class="ui small field">
     <label>URL</label>
     <input id="url" ng-model="formFields.url" type="url"></div>
 <button
-  class="ui submit primary button"
+  class="ui center aligned submit primary button"
   type="buton">
     <i class="plus icon"></i>Create redirect
   </button>
 
 </form>
+</div>
 
 <div class="ui active centered inline loader" ng-show="results.length ==0"></div>
   <table class="ui sortable selectable celled fixed table" ng-show="results.length>0">
