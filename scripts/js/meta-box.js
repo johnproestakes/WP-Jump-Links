@@ -1,5 +1,5 @@
 angular.module('JumpLinksMetaBox', [])
-.controller('MainController',['$scope', '$http', function($scope, $http){
+.controller('JumpLinksController',['$scope', '$http', function($scope, $http){
   $scope.title = "holler";
   $scope.form = {
     url: "",

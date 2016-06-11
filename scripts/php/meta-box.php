@@ -1,5 +1,8 @@
 
-  <script>window.angular || document.writeln('<script'+' src="<?=$plugin_url?>/scripts/js/libs/angular.min.js" type="text/javascript"></'+'script>');
+
+
+  <script>
+  window.angular || document.writeln('<script'+' src="<?=$plugin_url?>scripts/js/libs/angular.min.js" type="text/javascript"></'+'script>');
     var ajaxurl = "<?=get_admin_url()?>admin-ajax.php";
     var jecPostId = <?=$post->ID?>;
     </script>
@@ -8,12 +11,12 @@
   #JumpLinksMetaBox input {width: 100%;}
 </style>
 
-  <script type="text/javascript" src="<?=$plugin_url?>/scripts/js/meta-box.js"></script>
+  <script type="text/javascript" src="<?=$plugin_url?>scripts/js/meta-box.js"></script>
 
   <aside
-    ng-app="JumpLinksMetaBox"
+  
     id="JumpLinksMetaBox"
-    ng-controller="MainController"
+    ng-controller="JumpLinksController"
     ng-cloak>
 
     <p>
@@ -31,3 +34,5 @@
       {{item}}
       </div>
   </aside>
+
+  <script>angular.bootstrap(document.getElementById('JumpLinksMetaBox'), ['JumpLinksMetaBox']);</script>

@@ -43,30 +43,7 @@ trait Detect {
     return $output;
   }
 
-  public function generate_guid($str){
-    $alph = str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-    $a = str_split($str);
-    $output = "";
-    foreach($a as $k => $char){
-      switch($char){
-        case "a":
-          $output .= $alph[rand(0,count($alph))];
-        break;
-        case "#":
-          $output .= rand(0,9);
-        break;
-        case "x":
-          if(!rand(0,1)){
-            $output .= $alph[rand(0,count($alph))];
-          } else {
-            $output .= rand(0,9);
-          }
-        break;
-
-      }
-    }
-    return $output;
-  }
+  
 
 
 
