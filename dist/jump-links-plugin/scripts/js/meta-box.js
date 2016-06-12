@@ -10,7 +10,7 @@ angular.module('JumpLinksMetaBox', [])
   $scope.insertUrl = function(){
     $http({
       url: ajaxurl + "?action=jump_links_insert_url",
-      data: {url: $scope.form.url, title: $scope.form.title},
+      data: $scope.form,
       method: "POST"
     }).then(function(response){
       console.log(response);

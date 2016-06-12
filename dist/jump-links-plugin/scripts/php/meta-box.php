@@ -14,18 +14,18 @@
   <script type="text/javascript" src="<?=$plugin_url?>scripts/js/meta-box.js"></script>
 
   <aside
-
+  
     id="JumpLinksMetaBox"
     ng-controller="JumpLinksController"
     ng-cloak>
 
     <p>
       <label>Title</label>
-    <input type="text" ng-model="form.title"/></p>
+    <input type="text" ng-modle="form.title"/></p>
 
     <p>
     <label>URL</label>
-    <input type="text" ng-model="form.url"/>
+    <input type="text" ng-modle="form.url"/>
   </p>
 
     <button type="button" class="button" ng-click="insertUrl()">Create</button>

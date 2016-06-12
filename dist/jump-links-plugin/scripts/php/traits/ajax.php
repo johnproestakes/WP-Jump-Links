@@ -94,32 +94,22 @@ trait Ajax {
 
   public function ajax_insert_new_url(){
     global $wpdb;
-    $output = array();
+
     $params = json_decode(file_get_contents('php://input'));
     $guid = $this->generate_guid($this->guid_pattern);
-
-    if(!isset($params->title) || $params->title=="" || !isset($params->url) || $params->url ==""){
-      $output['errors'] = "Could not read inputs were not set.";
-
+    $wpdb->insert($wpdb->prefix."jump_links", array(
+      "url"=>$params->url,
+      "title"=>$params->title,
+      "guid"=>$guid
+    ));
+    $output = array('guid'=>$guid);
+    if(!$wpdb->insert_id){
+      $output['errors'] = "Did not work, try again later.";
     } else {
-      $wpdb->insert($wpdb->prefix."jump_links", array(
-        "url"=>$params->url,
-        "title"=>$params->title,
-        "guid"=>$guid
-      ));
-      if(!$wpdb->insert_id){
-        $output['errors'] = "Did not work, try again later.";
-      } else {
-        $output['guid']=$guid;
-        $output['id'] = $wpdb->insert_id;
-        $output['url'] = site_url() . "/" . $guid;
-        $output['link'] = $params->url;
-        $output['title'] = $params->title;
-      }
+      $output['id'] = $wpdb->insert_id;
+      $output['url'] = site_url() . "/" . $guid;
+      $output['title'] = $params->title;
     }
-
-
-
     header('content-type: application/json');
     echo json_encode($output);
     wp_die();

@@ -71,28 +71,29 @@ $scope.refresh = function(pageid){
 };
 
 $scope.refresh($routeParams.pageid);
-$scope.insertUrl = function(){
-  $http({method:"POST", url: adminUrl + "?action=jump_links_insert_url", data:{
-    url: $scope.formFields.url,
-    title: $scope.formFields.title
-  }}).then(function(response){
-    if(response.data && response.data[0] && response.data[0].errors){
-      console.log();
-        //$scope.results = response.data;
-        alert(response.data[0].errors);
-    }
-    else {
-      console.log(response);
-      $scope.formFields = {
-        url: "",
-        title: ""
+$scope.insertUrl = function(evt){
+  jQuery('.ui.form .ui.button').addClass("loading").prop("disabled", true);
 
-      };
-      $scope.refresh($scope.currentPage);
+  $http({
+    method:"POST",
+    url: adminUrl + "?action=jump_links_insert_url",
+    data:{
+      url: $scope.formFields.url,
+      title: $scope.formFields.title
     }
-    console.log(adminUrl + "?action=jump_links_get_list");
-    console.log(response);
-  },function(){});
+  }).then(function(response){
+      if(response.data
+        && response.data[0]
+        && response.data[0].errors){
+          console.log(response.data[0].errors);
+        }
+      else {
+        $scope.formFields = { url: "", title: "" };
+        $scope.refresh($scope.currentPage);
+        }
+      jQuery('.ui.popup').popup('hide all');
+      jQuery('.ui.form .ui.button').prop("disabled", false).removeClass("loading");
+    },function(){});
 };
 
 
